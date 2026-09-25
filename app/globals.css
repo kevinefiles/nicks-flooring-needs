@@ -1,0 +1,86 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-outfit);
+  --font-display: var(--font-fraunces);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-destructive: var(--destructive);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  --radius: 0.85rem;
+  --background: #f4f7fb;
+  --foreground: #071833;
+  --card: #ffffff;
+  --card-foreground: #071833;
+  --popover: #ffffff;
+  --popover-foreground: #071833;
+  --primary: #0c4ddb;
+  --primary-foreground: #ffffff;
+  --secondary: #e7eef8;
+  --secondary-foreground: #10284d;
+  --muted: #e7eef8;
+  --muted-foreground: #3d5278;
+  --accent: #d7e4ff;
+  --accent-foreground: #071833;
+  --destructive: #b42318;
+  --border: #c9d5e6;
+  --input: #c9d5e6;
+  --ring: #0c4ddb;
+  color-scheme: light;
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image: radial-gradient(ellipse 70% 42% at 100% -8%, rgba(12, 77, 219, 0.16), transparent 55%), radial-gradient(ellipse 36% 28% at -8% 18%, rgba(12, 77, 219, 0.08), transparent 60%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+@layer components {
+  .page-wrap { @apply mx-auto w-full max-w-[1180px] px-5 sm:px-8; }
+  .display { font-family: var(--font-fraunces), Georgia, serif; @apply font-semibold tracking-[-0.035em]; }
+}
+
+.floor { position: relative; overflow: hidden; isolation: isolate; background: #123a86; }
+.floor .flake, .floor .sheen, .floor .vignette { position: absolute; inset: 0; pointer-events: none; }
+.floor .flake { background-image: radial-gradient(circle at 12% 22%, rgba(255,255,255,.9) 0 1.1px, transparent 1.5px), radial-gradient(circle at 63% 74%, rgba(255,255,255,.8) 0 1.6px, transparent 2.1px), radial-gradient(circle at 78% 36%, rgba(186,214,255,.95) 0 1.3px, transparent 1.8px); background-size: 140px 120px, 200px 150px, 160px 140px; mix-blend-mode: soft-light; }
+.floor .sheen { background: linear-gradient(115deg, transparent 32%, rgba(255,255,255,.72) 50%, transparent 68%); mix-blend-mode: screen; }
+.floor .vignette { background: linear-gradient(180deg, rgba(255,255,255,.2), transparent 28%), linear-gradient(0deg, rgba(7,24,51,.28), transparent 42%); }
+.floor.harbor { background: radial-gradient(120% 80% at 20% 0%, #7eb0ff 0%, transparent 46%), linear-gradient(155deg, #1a4eb8 0%, #0a2f86 48%, #071833 100%); }
+.floor.porcelain { background: linear-gradient(160deg, #f7f5f1 0%, #e4e0d8 45%, #c9c3b8 100%); }
+.floor.porcelain .flake { opacity: .35; mix-blend-mode: multiply; }
+.floor.graphite { background: linear-gradient(150deg, #2a313c 0%, #151920 55%, #0c0e12 100%); }
+.floor.tide { background: radial-gradient(50% 40% at 30% 40%, rgba(125,211,252,.85), transparent 60%), linear-gradient(140deg, #082047 0%, #123a8a 40%, #0b1b33 100%); }
+.ticket { position: relative; border-radius: 28px; border: 1px solid #d5deea; background: #fff; padding: 28px 24px 28px 36px; box-shadow: 0 22px 50px rgba(7,24,51,.1); }
+.ticket::before { content: ""; position: absolute; left: 18px; top: 16px; bottom: 16px; width: 3px; border-radius: 99px; background: #0c4ddb; }
